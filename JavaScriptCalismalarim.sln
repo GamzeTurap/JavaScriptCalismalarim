@@ -8,20 +8,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ornek01", "Ornek01", "{E737
 		Ornek1.html = Ornek1.html
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ornek2", "Ornek2", "{616CA877-CA60-4E34-A8E0-25CE924773D0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ornek02", "Ornek02", "{616CA877-CA60-4E34-A8E0-25CE924773D0}"
 	ProjectSection(SolutionItems) = preProject
 		Ornek2.html = Ornek2.html
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ornek3", "Ornek3", "{33450448-5094-401B-A16F-5F921DD77AFF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ornek03", "Ornek03", "{33450448-5094-401B-A16F-5F921DD77AFF}"
 	ProjectSection(SolutionItems) = preProject
 		Ornek3.css = Ornek3.css
 		Ornek3.html = Ornek3.html
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ornek4", "Ornek4", "{BA82ADC4-810D-48BC-94ED-B5DFBF8A172B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ornek04", "Ornek04", "{BA82ADC4-810D-48BC-94ED-B5DFBF8A172B}"
 	ProjectSection(SolutionItems) = preProject
 		Ornek4.html = Ornek4.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ornek05", "Ornek05", "{CC8B80F8-D74A-42C1-937E-26570677DDBF}"
+	ProjectSection(SolutionItems) = preProject
+		Ornek5.html = Ornek5.html
 	EndProjectSection
 EndProject
 Global

@@ -26,9 +26,14 @@
         var meyveler = []; //bos bir dizi tanimladik.
 
         function temizle() {
-            meyveler = [];
+            var sonuc = document.querySelectorAll("input[type=text]");
+            console.log(sonuc);
+            for (var i = 0; i < sonuc.length; i++) {
+                sonuc[i].value = "";
 
-        }//temizle fonc. bitti
+            }
+
+        }//temizle func. bitti
 
         function meyveEkle() {
             //meyve adini alalim
@@ -45,7 +50,7 @@
 
             var meyvedenVarmi = false;
             for (var i = 0; i < meyveler.length; i++) {
-                if (meyveler[i].ad.toLwerCase() == meyveAdi.toLowerCase()) {
+                if (meyveler[i].ad.toLowerCase() == meyveAdi.toLowerCase()) {
                     meyveVarMi = true;
                     meyveler[i].adet += 1;
                     break;
@@ -58,10 +63,10 @@
 
             }
             document.getElementById("txtMeyveAdi").value = "";
-            //tüm meyveleri getirecek fonc. cagirmaliyiz.
+            //tüm meyveleri getirecek func. cagirmaliyiz.
             MeyveleriGetir();
 
-        }//Meyve ekle fonc. bitti
+        }//Meyve ekle func. bitti
 
         function MeyveleriGetir() {
             //Meyveleri tek tek div icine yerlestireceğiz.
@@ -88,14 +93,14 @@
                 artiBtn.addEventListener("click", AdetArttir);
 
                 //eksi butonu ekleyelim
-                var artiBtn = document.createElement("input");
+                var eksiBtn = document.createElement("input");
                 eksiBtn.setAttribute("type", "button");
                 eksiBtn.setAttribute("value", "-");
                 eksiBtn.setAttribute("id", meyveler[i].ad);
                 eksiBtn.addEventListener("click", AdetAzalt);
 
                 //sil butnu ekleyelim
-                var artiBtn = document.createElement("input");
+                var silBtn = document.createElement("input");
                 silBtn.setAttribute("type", "button");
                 silBtn.setAttribute("value", "SİL");
                 silBtn.setAttribute("id", meyveler[i].ad);
@@ -116,9 +121,50 @@
             document.getElementById("meyveDiv").appendChild(span);
             
 
-        }//Meyveler fonc. bitti
+        }//Meyveler func. bitti
+
+        function AdetArttir() {
+            for (var i = 0; i < meyveler.length; i++) {
+                if (meyveler[i].ad.toLowerCase() == this.id.toLowerCase()) {
+                    meyveler[i].adet++;
+                    break;
+
+                }
+            }// for bitti
+
+            MeyveleriGetir();
+        }//AdetArttir func. bitti
+
+        function MeyveSil() {
+            for (var i = 0; i < meyveler.length; i++) {
+                if (meyveler[i].ad.toLowerCase() == this.id.toLowerCase()) {
+                    meyveler.splice(i, 1);  //arryden cikarttik
+                    break;
+                }
+            }// for bitti
+            MeyveleriGetir();
+        }//MeyveSil func. bitti
+
+        function AdetAzalt() {
+            for (var i = 0; i < meyveler.length; i++) {
+                if (meyveler[i].ad.toLowerCase() == this.id.toLowerCase()) {
+
+                    meyveler[i].adet--;
+                    //acaba meyvenin adeti 0 oldu mu?
+                    if (meyveler[i].adet == 0) {
+                        meyveler.splice(i, 1);
+                    }                   
+                    break;
+
+                }
+            }// for bitti
+
+            MeyveleriGetir();
+        }//AdetAzalt func. bitti
 
     </script>
+
+    
 
 </body>
 </html>
