@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+
+<html lang="tr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Meyve Ornegi</title>
+</head>
+<body>
+    <div style="margin-top:50px; width:100%; text-align:center">
+        <h2>Meyve Listesi </h2>
+        <hr color="#aaaaaa" width="100%" size="6" /> <br /><br />
+
+        <input type="text" placeholder="Meyve adi giriniz.." id="txtMeyveAdi" /><br /><br />
+
+        <input type="button" value="EKLE" class="ekleBtn" onclick="meyveEkle()" />
+        <input type="button" value="TEMİZLE" class="temizleBtn" onclick="temizle()" />
+        <br /><br />
+
+        <input type="text" placeholder="Meyve ara.." id="txtMeyveAra" />
+        <br /><br />
+        <div id="meyveDiv"></div>
+
+    </div>
+
+    <script>
+        var meyveler = []; //bos bir dizi tanimladik.
+
+        function temizle() {
+            meyveler = [];
+
+        }//temizle fonc. bitti
+
+        function meyveEkle() {
+            //meyve adini alalim
+            var meyveAdi = document.getElementById("txtMeyveAdi").value.trim();
+            if (meyveAdi == null || meyveAdi.length == 0) {
+                alert("Meyve adi bos gecilemez");
+                return;
+            }
+            var yeniMeyve = {
+                ad: meyveAdi,
+                adet: 1
+            };
+            //meyveler listesine eklenecek
+
+            var meyvedenVarmi = false;
+            for (var i = 0; i < meyveler.length; i++) {
+                if (meyveler[i].ad.toLwerCase() == meyveAdi.toLowerCase()) {
+                    meyveVarMi = true;
+                    meyveler[i].adet += 1;
+                    break;
+
+                }
+
+            }//for bitti
+            if (!meyvedenVarmi) {
+                meyveler.push(yeniMeyve);
+
+            }
+            document.getElementById("txtMeyveAdi").value = "";
+            //tüm meyveleri getirecek fonc. cagirmaliyiz.
+            MeyveleriGetir();
+
+        }//Meyve ekle fonc. bitti
+
+        function MeyveleriGetir() {
+            //Meyveleri tek tek div icine yerlestireceğiz.
+            //Bu islemicin OL sirali liste kullanalim
+
+            document.getElementById("meyveDiv").innerHTML = "";
+            var toplam = 0;
+            var ol = document.createElement("ol");
+            ol.setAttribute("id", "meyveList");
+            for (var i = 0; i < meyveler.length; i++) {
+                toplam += meyveler[i].adet;
+                var li = document.createElement("li");
+                li.innerHTML =
+                    "<b>" + meyveler[i].ad + " - <i>"
+                    + meyveler[i].adet + "</i></b>";
+                li.style.listStyleType = "none";
+
+               
+                //eksi butonu ekleyelim
+                var artiBtn = document.createElement("input");
+                artiBtn.setAttribute("type", "button");
+                artiBtn.setAttribute("value", "+");
+                artiBtn.setAttribute("id", meyveler[i].ad);
+                artiBtn.addEventListener("click", AdetArttir);
+
+                //eksi butonu ekleyelim
+                var artiBtn = document.createElement("input");
+                eksiBtn.setAttribute("type", "button");
+                eksiBtn.setAttribute("value", "-");
+                eksiBtn.setAttribute("id", meyveler[i].ad);
+                eksiBtn.addEventListener("click", AdetAzalt);
+
+                //sil butnu ekleyelim
+                var artiBtn = document.createElement("input");
+                silBtn.setAttribute("type", "button");
+                silBtn.setAttribute("value", "SİL");
+                silBtn.setAttribute("id", meyveler[i].ad);
+                silBtn.addEventListener("click", MeyveSil);
+
+                li.appendChild(artiBtn);
+                li.appendChild(eksiBtn);
+                li.appendChild(silBtn);
+                ol.appendChild(li);
+
+
+
+            }//for burada bitti
+            document.getElementById("meyveDiv").appendChild(ol);
+            var span = document.createElement("span");
+            span.innerHTML = "<b>Toplam=" + toplam +
+                "</b>";
+            document.getElementById("meyveDiv").appendChild(span);
+            
+
+        }//Meyveler fonc. bitti
+
+    </script>
+
+</body>
+</html>
